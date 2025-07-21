@@ -13,7 +13,10 @@ public class LoggerUtil {
         try (FileWriter fw = new FileWriter(LOG_FILE, true)) {
             LocalDateTime now = LocalDateTime.now();
             String timestamp = now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+
             fw.write(String.format("[%s] %s - %s %s -> %d\n", timestamp, clientIP, method, path, statusCode));
+            System.out.printf("[LOGGED] %s %s %s -> %d\n", clientIP, method, path, statusCode);
+
         } catch (IOException e) {
             System.err.println("Logging failed: " + e.getMessage());
         }

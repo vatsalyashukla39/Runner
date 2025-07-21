@@ -3,6 +3,7 @@ import util.LoggerUtil;
 
 public class RequestRouter {
     public static void route(HttpRequest request, HttpResponse response) {
+        System.out.println("[Router] Routing " + request.getMethod() + " " + request.getPath());
         HttpHandler handler;
 
         switch (request.getMethod()) {

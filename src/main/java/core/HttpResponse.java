@@ -33,5 +33,21 @@ public class HttpResponse {
             e.printStackTrace();
         }
     }
+    public void sendHtml(int statusCode, String statusText, String html) {
+        try {
+            PrintWriter writer = new PrintWriter(outputStream, true);
+            // 1. Status line
+            writer.printf("HTTP/1.1 %d %s\r\n", statusCode, statusText);
+            // 2. Must tell the browser it’s HTML
+            writer.println("Content-Type: text/html");
+            // 3. Length in bytes
+            writer.println("Content-Length: " + html.getBytes().length);
+            writer.println();            // blank line: end of headers
+            // 4. Body
+            writer.println(html);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
 
