@@ -22,4 +22,4 @@ A simple multithreaded HTTP server in Java—built from scratch with no external
 
 Below is an example of the `server.log` after handling a few requests:
 
-![Server Log Screenshot](images/Screenshot 2025-07-23 120854.png)
+![Server Log Screenshot](images/a.png)
