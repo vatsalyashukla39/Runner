@@ -3,7 +3,7 @@ package core;
 public class GetHandler implements HttpHandler{
     @Override
     public void handle(HttpRequest request, HttpResponse response) {
-        // Basic example: return HTML content for GET
+
         if ("/form".equals(request.getPath())) {
             String html = """
         <!DOCTYPE html>

@@ -9,7 +9,6 @@ import java.util.Map;
 public class HttpRequest {
     private String method;
     private String path;
-    private String httpVersion;
     private Map<String, String> headers = new HashMap<>();
     private String body;
     private String version;
@@ -20,7 +19,7 @@ public class HttpRequest {
     }
 
     private void parseRequest(BufferedReader reader) throws IOException {
-        // Parse request line: e.g., "GET /hello HTTP/1.1"
+        //"GET /hello HTTP/1.1"
         String line = reader.readLine();
         if (line == null || line.isEmpty()) return;
 
@@ -31,7 +30,6 @@ public class HttpRequest {
             this.version = tokens[2];
         }
 
-        // Parse headers
         while ((line = reader.readLine()) != null && !line.isEmpty()) {
             String[] header = line.split(":", 2);
             if (header.length == 2) {
@@ -39,7 +37,7 @@ public class HttpRequest {
             }
         }
 
-        // Parse body (only for POST)
+
         if ("POST".equalsIgnoreCase(method)) {
             int contentLength = 0;
             if (headers.containsKey("Content-Length")) {
@@ -67,14 +65,6 @@ public class HttpRequest {
 
     public void setPath(String path) {
         this.path = path;
-    }
-
-    public String getHttpVersion() {
-        return httpVersion;
-    }
-
-    public void setHttpVersion(String httpVersion) {
-        this.httpVersion = httpVersion;
     }
 
     public Map<String, String> getHeaders() {

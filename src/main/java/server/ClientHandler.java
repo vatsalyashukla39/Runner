@@ -22,19 +22,9 @@ import java.net.Socket;
                     InputStream input = clientSocket.getInputStream();
                     OutputStream output = clientSocket.getOutputStream();
             ) {
-//                BufferedReader reader = new BufferedReader(new InputStreamReader(input));
-//                PrintWriter writer = new PrintWriter(output, true);
-//
-//                // Parse the incoming request
-//                HttpRequest request = new HttpRequest(reader);
-//                HttpResponse response = new HttpResponse(output);
-//
-//                // Route and handle the request
-//                RequestRouter.route(request, response);
                 System.out.println("[+] New connection from " + clientSocket.getInetAddress());
 
                 BufferedReader reader = new BufferedReader(new InputStreamReader(input));
-                PrintWriter writer = new PrintWriter(output, true);
                 HttpRequest request = new HttpRequest(reader);
                 System.out.println("[>] Received Request: " + request.getMethod() + " " + request.getPath());
 
